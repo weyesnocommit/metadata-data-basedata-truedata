@@ -1,0 +1,46 @@
+
+schema {
+    query: Query
+    mutation: Mutation
+}
+
+type Query{
+    // return d mihm whey dey d string match
+    mihm(name: String!): Mihm
+    // return all dey content match alzo return all d mathcing 
+    // mihm names in query 
+    mihms(content: String!, tag: [String!]!, name: [String!]!): [Mihm]!  
+}
+
+type Mutation {
+    newMihm(
+        name: String!,
+        content: String!,
+        caption: String!,
+        tags: [String!]!,
+        category: String!
+        extension: String!
+        creationTimestamp: Int!
+        path: String!,                //how fuck wioll am path know upon submit? need writes file name?
+        author: String!
+    ): Mihm!
+}
+
+type Mihm {
+    name: String!
+    content: [Mihm!]     //STRUCTRUALY
+    tags: [Tag!]         //SEMANTICALLY
+    caption: String
+    category: String     //--
+    extension: String
+    creationTimestamp: Int
+    path: String!
+    author: String
+}
+
+type Tag {
+    name: String!
+}
+
+
+
